@@ -10,10 +10,12 @@ import 'package:pengiriman/home_page.dart';
 
 class Muatan extends StatefulWidget {
   static String tag = 'muatan-page';
+
+  const Muatan({Key? key}) : super(key: key);
   @override
   // final String text;
   // Home({Key key, @required this.text}) : super(key: key);
-  _MuatanState createState() => new _MuatanState();
+  _MuatanState createState() => _MuatanState();
 }
 
 class _MuatanState extends State<Muatan> {
@@ -27,33 +29,33 @@ class _MuatanState extends State<Muatan> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Daftar Muatan",
           style: TextStyle(fontFamily: "Netflix"),
         ),
         backgroundColor: Colors.blue,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).pushReplacement(new MaterialPageRoute(
-              builder: (BuildContext context) => new AddData()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => AddData()));
         },
       ),
 
-      body: new FutureBuilder<List>(
+      body: FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
 
           return snapshot.hasData
-              ? new ItemList(
+              ? ItemList(
                   list: snapshot.data ?? [],
                 )
-              : new Center(
-                  child: new CircularProgressIndicator(),
+              : const Center(
+                  child: CircularProgressIndicator(),
                 );
         },
       ),
@@ -78,9 +80,9 @@ class _MuatanState extends State<Muatan> {
 
 class ItemList extends StatelessWidget {
   final List list;
-  ItemList({required this.list});
+  const ItemList({Key? key, required this.list}) : super(key: key);
 
-  void _DeleteData(BuildContext context, String error) {
+  void _deleteData(BuildContext context, String error) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
       SnackBar(
@@ -93,19 +95,19 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
+    return ListView.builder(
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, i) {
-        return new Container(
+        return Container(
           padding: const EdgeInsets.all(10.0),
-          child: new GestureDetector(
-            child: new Card(
-              child: new ListTile(
-                title: new Text(
+          child: GestureDetector(
+            child: Card(
+              child: ListTile(
+                title: Text(
                   list[i]['muatan_nama'],
-                  style: TextStyle(fontFamily: "Netflix"),
+                  style: const TextStyle(fontFamily: "Netflix"),
                 ),
-                leading: new Icon(Icons.widgets),
+                leading: const Icon(Icons.widgets),
                 subtitle: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -124,12 +126,12 @@ class ItemList extends StatelessWidget {
                     children: [
                       // button edit
                       IconButton(
-                          icon: Icon(Icons.details),
+                          icon: const Icon(Icons.details),
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
-                                new MaterialPageRoute(
+                                MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        new Detail(
+                                        Detail(
                                           list: list,
                                           index: i,
                                         )));
@@ -137,7 +139,7 @@ class ItemList extends StatelessWidget {
 
                       // button hapus
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () {
                           //membuat dialog konfirmasi hapus
 
@@ -146,10 +148,10 @@ class ItemList extends StatelessWidget {
                           http.post(Uri.parse(url),
                               body: {'id': list[i]['muatan_id']});
 
-                          _DeleteData(context, "Data berhasil dihapus");
+                          _deleteData(context, "Data berhasil dihapus");
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) {
-                            return Muatan();
+                            return const Muatan();
                           }));
                         },
                       ),

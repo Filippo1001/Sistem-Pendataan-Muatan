@@ -6,16 +6,16 @@ class EditData extends StatefulWidget {
   final List list;
   final int index;
 
-  EditData({required this.list, required this.index});
+  const EditData({Key? key, required this.list, required this.index}) : super(key: key);
 
   @override
-  _EditDataState createState() => new _EditDataState();
+  _EditDataState createState() => _EditDataState();
 }
 
 class _EditDataState extends State<EditData> {
-  TextEditingController controllerAsal = new TextEditingController();
-  TextEditingController controllerTujuan = new TextEditingController();
-  TextEditingController controllerTarif = new TextEditingController();
+  TextEditingController controllerAsal = TextEditingController();
+  TextEditingController controllerTujuan = TextEditingController();
+  TextEditingController controllerTarif = TextEditingController();
 
   void editData() {
     var url = "https://filipposkripsi.000webhostapp.com/tarif/editdata.php";
@@ -30,19 +30,19 @@ class _EditDataState extends State<EditData> {
   @override
   void initState() {
     controllerAsal =
-        new TextEditingController(text: widget.list[widget.index]['asal']);
+        TextEditingController(text: widget.list[widget.index]['asal']);
     controllerTujuan =
-        new TextEditingController(text: widget.list[widget.index]['tujuan']);
+        TextEditingController(text: widget.list[widget.index]['tujuan']);
     controllerTarif =
-        new TextEditingController(text: widget.list[widget.index]['tarif']);
+        TextEditingController(text: widget.list[widget.index]['tarif']);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Edit Data",
           style: TextStyle(fontFamily: "Netflix"),
         ),
@@ -51,75 +51,74 @@ class _EditDataState extends State<EditData> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                new TextField(
+                TextField(
                   controller: controllerAsal,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Asal Kirim",
                     labelText: "Asal Kirim",
-                    icon: Icon(Icons.location_city),
+                    icon: const Icon(Icons.location_city),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerTujuan,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Tujuan Kirim",
                     labelText: "Tujuan Kirim",
-                    icon: Icon(Icons.location_city),
+                    icon: const Icon(Icons.location_city),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerTarif,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Biaya Kirim",
                     labelText: "Biaya Kirim",
-                    icon: Icon(Icons.money),
+                    icon: const Icon(Icons.money),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                Container(
-                    child: Row(
+                const SizedBox(height: 8.0),
+                Row(
                   children: [
-                    RaisedButton(
-                      child: new Text(
-                        "Simpan",
-                        style: TextStyle(
-                            fontFamily: "Netflix", color: Colors.white),
-                      ),
-                      color: Colors.blueAccent,
-                      onPressed: () {
-                        editData();
-                        Navigator.of(context).pushReplacement(
-                            new MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    new Tarif()));
-                      },
-                    ),
-                    RaisedButton(
-                      child: Text(
-                        "Kembali",
-                        style: TextStyle(
-                            fontFamily: "Netflix", color: Colors.white),
-                      ),
-                      color: Colors.red,
-                      onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return Tarif();
-                        }));
-                      },
-                    ),
+                RaisedButton(
+                  child: const Text(
+                    "Simpan",
+                    style: TextStyle(
+                        fontFamily: "Netflix", color: Colors.white),
+                  ),
+                  color: Colors.blueAccent,
+                  onPressed: () {
+                    editData();
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                Tarif()));
+                  },
+                ),
+                RaisedButton(
+                  child: const Text(
+                    "Kembali",
+                    style: TextStyle(
+                        fontFamily: "Netflix", color: Colors.white),
+                  ),
+                  color: Colors.red,
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return Tarif();
+                    }));
+                  },
+                ),
                   ],
-                )),
+                ),
               ],
             ),
           ],

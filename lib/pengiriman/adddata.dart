@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'listdata.dart';
-import 'package:flutter/cupertino.dart';
-import 'dart:async';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
 class AddData extends StatefulWidget {
+  const AddData({Key? key}) : super(key: key);
+
   @override
-  _AddDataState createState() => new _AddDataState();
+  _AddDataState createState() => _AddDataState();
 }
 
 class _AddDataState extends State<AddData> {
-  TextEditingController controllerTgl = new TextEditingController();
-  TextEditingController controllerEstimasi = new TextEditingController();
+  TextEditingController controllerTgl = TextEditingController();
+  TextEditingController controllerEstimasi = TextEditingController();
 
-  var selectedDate = new DateFormat('yyyy-MM-dd').format(DateTime.now());
+  var selectedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String _valMuatan = "Pilih Muatan";
   String _valAsal = "Pilih Asal Pengiriman";
   String _valTujuan = "Pilih Tujuan Pengiriman";
@@ -93,9 +93,9 @@ class _AddDataState extends State<AddData> {
     getSopir();
     getAsal();
     getTujuan(); //Ketika pertama kali membuka home screen makan method ini dijalankan untuk pertama kalinya juga
-    controllerTgl = new TextEditingController(text: selectedDate.toString());
+    controllerTgl = TextEditingController(text: selectedDate.toString());
     controllerEstimasi =
-        new TextEditingController(text: selectedDate.toString());
+        TextEditingController(text: selectedDate.toString());
   }
 
   void addData() {
@@ -124,42 +124,42 @@ class _AddDataState extends State<AddData> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Tambah Data",
-          style: TextStyle(fontFamily: "Netflix"),
+          style: const TextStyle(fontFamily: "Netflix"),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerTgl,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "yyyy-mm-dd",
                     labelText: "Tanggal Kirim",
-                    icon: Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_today),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerEstimasi,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "yyyy-mm-dd",
                     labelText: "Tanggal Estimasi",
-                    icon: Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_today),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 DropdownButton(
                   hint: Text(_valAsal),
                   isExpanded: true,
@@ -175,10 +175,10 @@ class _AddDataState extends State<AddData> {
                     });
                   },
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 DropdownButton(
                   hint: Text(_valTujuan),
                   isExpanded: true,
@@ -194,10 +194,10 @@ class _AddDataState extends State<AddData> {
                     });
                   },
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 DropdownButton(
                   hint: Text(_valMuatan),
                   isExpanded: true,
@@ -214,10 +214,10 @@ class _AddDataState extends State<AddData> {
                     });
                   },
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 DropdownButton(
                   hint: Text(_valSopir),
                   isExpanded: true,
@@ -233,12 +233,12 @@ class _AddDataState extends State<AddData> {
                     });
                   },
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
                 Row(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 200,
                       child: RaisedButton(
@@ -260,13 +260,13 @@ class _AddDataState extends State<AddData> {
                             // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                             //     builder: (BuildContext context) => new Home()));
                           },
-                          child: new Text(
+                          child: const Text(
                             "Simpan Data",
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                           color: Colors.green),
                     ),
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 200,
                       child: RaisedButton(
@@ -279,7 +279,7 @@ class _AddDataState extends State<AddData> {
                           // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                           //     builder: (BuildContext context) => new Home()));
                         },
-                        child: new Text(
+                        child: const Text(
                           "Kembali",
                           style: TextStyle(color: Colors.white),
                         ),

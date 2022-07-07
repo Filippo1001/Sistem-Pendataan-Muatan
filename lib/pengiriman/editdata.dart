@@ -6,18 +6,18 @@ class EditData extends StatefulWidget {
   final List list;
   final int index;
 
-  EditData({required this.list, required this.index});
+  const EditData({Key? key, required this.list, required this.index}) : super(key: key);
 
   @override
-  _EditDataState createState() => new _EditDataState();
+  _EditDataState createState() => _EditDataState();
 }
 
 class _EditDataState extends State<EditData> {
-  TextEditingController controllerResi = new TextEditingController();
-  TextEditingController controllerTgl = new TextEditingController();
-  TextEditingController controllerEstimasi = new TextEditingController();
-  TextEditingController controllerTujuan = new TextEditingController();
-  TextEditingController controllerBiaya = new TextEditingController();
+  TextEditingController controllerResi = TextEditingController();
+  TextEditingController controllerTgl = TextEditingController();
+  TextEditingController controllerEstimasi = TextEditingController();
+  TextEditingController controllerTujuan = TextEditingController();
+  TextEditingController controllerBiaya = TextEditingController();
 
   void editData() {
     var url =
@@ -34,24 +34,24 @@ class _EditDataState extends State<EditData> {
 
   @override
   void initState() {
-    controllerResi = new TextEditingController(
+    controllerResi = TextEditingController(
         text: widget.list[widget.index]['kirim_resi']);
-    controllerTgl = new TextEditingController(
+    controllerTgl = TextEditingController(
         text: widget.list[widget.index]['kirim_tanggal']);
-    controllerEstimasi = new TextEditingController(
+    controllerEstimasi = TextEditingController(
         text: widget.list[widget.index]['kirim_estimasi']);
-    controllerTujuan = new TextEditingController(
+    controllerTujuan = TextEditingController(
         text: widget.list[widget.index]['kirim_tujuan']);
-    controllerBiaya = new TextEditingController(
+    controllerBiaya = TextEditingController(
         text: widget.list[widget.index]['kirim_biaya']);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Edit Data",
           style: TextStyle(fontFamily: "Netflix"),
         ),
@@ -60,70 +60,70 @@ class _EditDataState extends State<EditData> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                new TextField(
+                TextField(
                   controller: controllerResi,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Nomor Resi Pengiriman",
                     labelText: "Nomor Resi Pengiriman",
-                    icon: Icon(Icons.book),
+                    icon: const Icon(Icons.book),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerTgl,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "yyyy-mm-dd",
                     labelText: "Tanggal Kirim",
-                    icon: Icon(Icons.input),
+                    icon: const Icon(Icons.input),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerEstimasi,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "yyyy-mm-dd",
                     labelText: "Tanggal Estimasi",
-                    icon: Icon(Icons.input),
+                    icon: const Icon(Icons.input),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerTujuan,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Tujuan Pengiriman",
                     labelText: "Tujuan Pengiriman",
-                    icon: Icon(Icons.input),
+                    icon: const Icon(Icons.input),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerBiaya,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Biaya Kirim",
                     labelText: "Biaya Kirim",
-                    icon: Icon(Icons.input),
+                    icon: const Icon(Icons.input),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: RaisedButton(
-                    child: new Text(
+                    child: const Text(
                       "SIMPAN DATA",
                       style:
                           TextStyle(fontFamily: "Netflix", color: Colors.white),
@@ -132,19 +132,19 @@ class _EditDataState extends State<EditData> {
                     onPressed: () {
                       editData();
                       Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
-                              builder: (BuildContext context) => new Kirim()));
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Kirim()));
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: RaisedButton(
-                    child: Text(
+                    child: const Text(
                       "Kembali",
                       style:
                           TextStyle(fontFamily: "Netflix", color: Colors.white),

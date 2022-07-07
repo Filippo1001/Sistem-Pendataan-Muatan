@@ -12,6 +12,9 @@ import 'package:intl/intl.dart';
 class DashboardMember extends StatefulWidget {
   @override
   static String tag = 'dashmember-page';
+
+  const DashboardMember({Key? key}) : super(key: key);
+  @override
   _DashboardMemberState createState() => _DashboardMemberState();
 }
 
@@ -29,7 +32,7 @@ class _DashboardMemberState extends State<DashboardMember> {
     }));
   }
 
-  void _Gagal(BuildContext context, String error) {
+  void _gagal(BuildContext context, String error) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
       SnackBar(
@@ -48,7 +51,7 @@ class _DashboardMemberState extends State<DashboardMember> {
       height: 150.0,
     );
 
-    final judul = Padding(
+    const judul = Padding(
       padding: EdgeInsets.all(8.0),
       child: Text(
         'Cek Resi Pengiriman',
@@ -58,17 +61,17 @@ class _DashboardMemberState extends State<DashboardMember> {
 
     final noresi = TextFormField(
       controller: controllerResi,
-      decoration: new InputDecoration(
+      decoration: InputDecoration(
         hintText: "Masukan No Resi",
         labelText: "Cek Resi Pengiriman",
-        icon: Icon(Icons.book),
+        icon: const Icon(Icons.book),
         border:
-            OutlineInputBorder(borderRadius: new BorderRadius.circular(5.0)),
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
       ),
     );
 
     final tblproses = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.lightBlueAccent.shade100,
@@ -79,7 +82,7 @@ class _DashboardMemberState extends State<DashboardMember> {
           onPressed: () {
             if (controllerResi.value.text.isEmpty) {
               setState(() {
-                _Gagal(context, "No Resi tidak boleh kosong.");
+                _gagal(context, "No Resi tidak boleh kosong.");
               }); //ID gabole kosong
             } else {
               String resiku = controllerResi.text;
@@ -89,7 +92,7 @@ class _DashboardMemberState extends State<DashboardMember> {
             }
           },
           color: Colors.green,
-          child: Text('Proses', style: TextStyle(color: Colors.white)),
+          child: const Text('Proses', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
@@ -99,15 +102,15 @@ class _DashboardMemberState extends State<DashboardMember> {
       backgroundColor: Colors.white,
       body: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.only(left: 24.0, right: 24.0),
+        padding: const EdgeInsets.only(left: 24.0, right: 24.0),
         children: <Widget>[
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           logo,
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           judul,
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           noresi,
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           Column(children: [
             tblproses,
           ]),

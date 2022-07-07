@@ -4,11 +4,11 @@ import 'package:http/http.dart' as http;
 import 'listdata.dart';
 
 class Detail extends StatefulWidget {
-  List list;
-  int index;
-  Detail({required this.index, required this.list});
+  final List list;
+  final int index;
+  const Detail({Key? key, required this.index, required this.list}) : super(key: key);
   @override
-  _DetailState createState() => new _DetailState();
+  _DetailState createState() => _DetailState();
 }
 
 class _DetailState extends State<Detail> {
@@ -19,10 +19,10 @@ class _DetailState extends State<Detail> {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return Sopir();
     }));
-    _DeleteData(context, "Data berhasil dihapus");
+    _deleteData(context, "Data berhasil dihapus");
   }
 
-  void _DeleteData(BuildContext context, String error) {
+  void _deleteData(BuildContext context, String error) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
       SnackBar(
@@ -35,63 +35,63 @@ class _DetailState extends State<Detail> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-          title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+          title: Text(
         "${widget.list[widget.index]['sopir_nama']}",
-        style: TextStyle(fontFamily: "Netflix"),
+        style: const TextStyle(fontFamily: "Netflix"),
       )),
-      body: new Container(
+      body: Container(
         height: 370.0,
         padding: const EdgeInsets.all(20.0),
-        child: new Card(
-          child: new Center(
-            child: new Column(
+        child: Card(
+          child: Center(
+            child: Column(
               children: <Widget>[
-                new Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 30.0),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     widget.list[widget.index]['sopir_nama'],
-                    style: new TextStyle(fontFamily: "Netflix", fontSize: 20.0),
+                    style: const TextStyle(fontFamily: "Netflix", fontSize: 20.0),
                   ),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "Alamat : ${widget.list[widget.index]['sopir_alamat']}",
-                    style: new TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
                 ),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "No Telepon : ${widget.list[widget.index]['sopir_notelp']}",
-                    style: new TextStyle(fontSize: 18.0),
+                    style: const TextStyle(fontSize: 18.0),
                   ),
                 ),
 
                 // new Padding(
                 //   padding: const EdgeInsets.only(top: 30.0),
                 // ),
-                new Column(
+                Column(
                   //mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      child: new RaisedButton(
-                        child: new Text(
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: RaisedButton(
+                        child: const Text(
                           "EDIT",
                           style: TextStyle(
                               fontFamily: "Netflix", color: Colors.white),
                         ),
                         color: Colors.green,
                         onPressed: () => Navigator.of(context)
-                            .pushReplacement(new MaterialPageRoute(
-                          builder: (BuildContext context) => new EditData(
+                            .pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => EditData(
                             list: widget.list,
                             index: widget.index,
                           ),
@@ -100,9 +100,9 @@ class _DetailState extends State<Detail> {
                     ),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                      child: new RaisedButton(
-                        child: new Text(
+                      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      child: RaisedButton(
+                        child: const Text(
                           "DELETE",
                           style: TextStyle(
                               fontFamily: "Netflix", color: Colors.white),
@@ -117,10 +117,10 @@ class _DetailState extends State<Detail> {
                 //   padding: const EdgeInsets.only(top: 30.0),
                 // ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                   width: double.infinity,
                   child: RaisedButton(
-                    child: Text(
+                    child: const Text(
                       "Kembali",
                       style: TextStyle(color: Colors.white),
                     ),

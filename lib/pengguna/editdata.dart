@@ -6,17 +6,17 @@ class EditData extends StatefulWidget {
   final List list;
   final int index;
 
-  EditData({required this.list, required this.index});
+  const EditData({Key? key, required this.list, required this.index}) : super(key: key);
 
   @override
-  _EditDataState createState() => new _EditDataState();
+  _EditDataState createState() => _EditDataState();
 }
 
 class _EditDataState extends State<EditData> {
-  TextEditingController controllerNama = new TextEditingController();
-  TextEditingController controllerUsername = new TextEditingController();
-  TextEditingController controllerPassword = new TextEditingController();
-  TextEditingController controllerLevel = new TextEditingController();
+  TextEditingController controllerNama = TextEditingController();
+  TextEditingController controllerUsername = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+  TextEditingController controllerLevel = TextEditingController();
 
   void editData() {
     var url = "https://filipposkripsi.000webhostapp.com/pengguna/editdata.php";
@@ -31,19 +31,19 @@ class _EditDataState extends State<EditData> {
   @override
   void initState() {
     controllerNama =
-        new TextEditingController(text: widget.list[widget.index]['user_nama']);
-    controllerUsername = new TextEditingController(
+        TextEditingController(text: widget.list[widget.index]['user_nama']);
+    controllerUsername = TextEditingController(
         text: widget.list[widget.index]['user_username']);
-    controllerPassword = new TextEditingController(
+    controllerPassword = TextEditingController(
         text: widget.list[widget.index]['user_password']);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Edit Data",
           style: TextStyle(fontFamily: "Netflix"),
         ),
@@ -52,49 +52,49 @@ class _EditDataState extends State<EditData> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                new TextField(
+                TextField(
                   controller: controllerNama,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Nama Pengguna",
                     labelText: "Nama Pengguna",
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerUsername,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Username",
                     labelText: "Username",
-                    icon: Icon(Icons.person_add),
+                    icon: const Icon(Icons.person_add),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerPassword,
                   obscureText: true,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Password",
                     labelText: "Password",
-                    icon: Icon(Icons.lock),
+                    icon: const Icon(Icons.lock),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
                   width: double.infinity,
                   height: 50,
                   child: RaisedButton(
-                    child: new Text(
+                    child: const Text(
                       "SIMPAN DATA",
                       style:
                           TextStyle(fontFamily: "Netflix", color: Colors.white),
@@ -103,23 +103,23 @@ class _EditDataState extends State<EditData> {
                     onPressed: () {
                       editData();
                       Navigator.of(context).pushReplacement(
-                          new MaterialPageRoute(
+                          MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  new Pengguna()));
+                                  Pengguna()));
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: double.infinity,
                   height: 50,
                   child: RaisedButton(
-                    child: Text(
+                    child: const Text(
                       "Kembali",
                       style:
-                          TextStyle(fontFamily: "Netflix", color: Colors.white),
+                          const TextStyle(fontFamily: "Netflix", color: Colors.white),
                     ),
                     color: Colors.red,
                     onPressed: () {

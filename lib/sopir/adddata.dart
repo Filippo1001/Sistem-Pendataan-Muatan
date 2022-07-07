@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pengiriman/pengguna/listdata.dart';
 import 'listdata.dart';
-import 'dart:async';
-import 'dart:convert';
 
 class AddData extends StatefulWidget {
+  const AddData({Key? key}) : super(key: key);
+
   @override
-  _AddDataState createState() => new _AddDataState();
+  _AddDataState createState() => _AddDataState();
 }
 
 class _AddDataState extends State<AddData> {
-  TextEditingController controllerNama = new TextEditingController();
-  TextEditingController controllerAlamat = new TextEditingController();
-  TextEditingController controllerNotelp = new TextEditingController();
+  TextEditingController controllerNama = TextEditingController();
+  TextEditingController controllerAlamat = TextEditingController();
+  TextEditingController controllerNotelp = TextEditingController();
 
   void addData() {
     var url = "https://filipposkripsi.000webhostapp.com/sopir/adddata.php";
@@ -38,9 +37,9 @@ class _AddDataState extends State<AddData> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Tambah Data",
           style: TextStyle(fontFamily: "Netflix"),
         ),
@@ -49,46 +48,46 @@ class _AddDataState extends State<AddData> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                new TextField(
+                TextField(
                   controller: controllerNama,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Nama Sopir",
                     labelText: "Nama Sopir",
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerAlamat,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Alamat",
                     labelText: "Alamat",
-                    icon: Icon(Icons.home),
+                    icon: const Icon(Icons.home),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerNotelp,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "No Telepon",
                     labelText: "No Telepon",
-                    icon: Icon(Icons.phone),
+                    icon: const Icon(Icons.phone),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
                 Column(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: double.infinity,
                       child: RaisedButton(
@@ -118,16 +117,16 @@ class _AddDataState extends State<AddData> {
                             // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                             //     builder: (BuildContext context) => new Home()));
                           },
-                          child: new Text(
+                          child: const Text(
                             "Simpan Data",
                             style: TextStyle(color: Colors.white),
                           ),
                           color: Colors.green),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: double.infinity,
                       child: RaisedButton(
@@ -140,7 +139,7 @@ class _AddDataState extends State<AddData> {
                           // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                           //     builder: (BuildContext context) => new Home()));
                         },
-                        child: new Text(
+                        child: const Text(
                           "Kembali",
                           style: TextStyle(color: Colors.white),
                         ),

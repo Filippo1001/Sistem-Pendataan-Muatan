@@ -8,10 +8,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Tracking extends StatefulWidget {
   static String tag = 'tracking-page';
 
+  const Tracking({Key? key}) : super(key: key);
+
   @override
   // final String text;
   // Home({Key key, @required this.text}) : super(key: key);
-  _TrackingState createState() => new _TrackingState();
+  _TrackingState createState() => _TrackingState();
 }
 
 class _TrackingState extends State<Tracking> {
@@ -68,17 +70,17 @@ class _TrackingState extends State<Tracking> {
         title: Text(resi),
         automaticallyImplyLeading: true,
       ),
-      body: new FutureBuilder<List>(
+      body: FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
 
           return snapshot.hasData
-              ? new ItemList(
+              ? ItemList(
                   list: snapshot.data ?? [],
                 )
-              : new Center(
-                  child: new CircularProgressIndicator(),
+              : const Center(
+                  child: CircularProgressIndicator(),
                 );
         },
       ),
@@ -88,23 +90,23 @@ class _TrackingState extends State<Tracking> {
 
 class ItemList extends StatelessWidget {
   final List list;
-  ItemList({required this.list});
+  const ItemList({Key? key, required this.list}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
+    return ListView.builder(
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, i) {
-        return new Container(
+        return Container(
           padding: const EdgeInsets.all(10.0),
-          child: new GestureDetector(
-            child: new Card(
-              child: new ListTile(
-                title: new Text(
+          child: GestureDetector(
+            child: Card(
+              child: ListTile(
+                title: Text(
                   list[i]['kirim_tanggal'],
-                  style: TextStyle(fontFamily: "Netflix"),
+                  style: const TextStyle(fontFamily: "Netflix"),
                 ),
-                leading: new Icon(Icons.widgets),
+                leading: const Icon(Icons.widgets),
                 subtitle: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

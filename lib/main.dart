@@ -21,23 +21,25 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context) => LoginPage(),
-    HomePage.tag: (context) => HomePage(""),
-    MemberPage.tag: (context) => MemberPage(),
-    Tracking.tag: (context) => Tracking(),
-    TrackingPage.tag: (context) => TrackingPage(),
-    Pengguna.tag: (context) => Pengguna(),
-    Tarif.tag: (context) => Tarif(),
+    HomePage.tag: (context) => const HomePage(""),
+    MemberPage.tag: (context) => const MemberPage(),
+    Tracking.tag: (context) => const Tracking(),
+    TrackingPage.tag: (context) => const TrackingPage(),
+    Pengguna.tag: (context) => const Pengguna(),
+    Tarif.tag: (context) => const Tarif(),
     Sopir.tag: (context) => Sopir(),
-    Muatan.tag: (context) => Muatan(),
+    Muatan.tag: (context) => const Muatan(),
     Kirim.tag: (context) => Kirim(),
-    LapMuatan.tag: (context) => LapMuatan(),
-    LapPengiriman.tag: (context) => LapPengiriman(),
-    Profil.tag: (context) => Profil(),
-    About.tag: (context) => About(),
-    HomeCust.tag: (context) => HomeCust(),
+    LapMuatan.tag: (context) => const LapMuatan(),
+    LapPengiriman.tag: (context) => const LapPengiriman(),
+    Profil.tag: (context) => const Profil(),
+    About.tag: (context) => const About(),
+    HomeCust.tag: (context) => const HomeCust(),
   };
 
-  // @override
+  MyApp({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PT. HERRY PUTRA MANDIRI',
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         fontFamily: 'Nunito',
       ),
-      home: SplashScreenPage(),
+      home: const SplashScreenPage(),
       routes: routes,
     );
   }

@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
       } else if (datauser[0]['user_level'] == '2') {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) {
-            return MemberPage();
+            return const MemberPage();
           }),
         );
       }
@@ -93,12 +93,12 @@ class _LoginPageState extends State<LoginPage> {
     final email = TextFormField(
       controller: user,
       autofocus: true,
-      decoration: new InputDecoration(
+      decoration: InputDecoration(
         hintText: "username",
         labelText: "Username",
-        icon: Icon(Icons.people),
+        icon: const Icon(Icons.people),
         border:
-            OutlineInputBorder(borderRadius: new BorderRadius.circular(5.0)),
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
         isDense: true,
       ),
       onChanged: (value) {
@@ -111,12 +111,12 @@ class _LoginPageState extends State<LoginPage> {
       controller: pass,
       autofocus: false,
       obscureText: _isHidePassword,
-      decoration: new InputDecoration(
+      decoration: InputDecoration(
         hintText: "password",
         labelText: "Password",
-        icon: Icon(Icons.lock),
+        icon: const Icon(Icons.lock),
         border:
-            OutlineInputBorder(borderRadius: new BorderRadius.circular(5.0)),
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
         suffixIcon: GestureDetector(
           onTap: () {
             _tooglePasswordVisibility();
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final loginAdmin = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.lightBlueAccent.shade100,
@@ -154,12 +154,12 @@ class _LoginPageState extends State<LoginPage> {
             //Navigator.of(context).pushNamed(HomePage.tag);
           },
           color: Colors.lightBlueAccent,
-          child: Text('LOGIN', style: TextStyle(color: Colors.white)),
+          child: const Text('LOGIN', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
 
-    final copyright = Center(
+    const copyright = Center(
       child: Text(
         'Copyright 2022 - PT. HERRY PUTRA MANDIRI',
         style: TextStyle(fontSize: 15.0, color: Colors.black),
@@ -172,16 +172,16 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             logo,
-            SizedBox(height: 48.0),
+            const SizedBox(height: 48.0),
             email,
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             password,
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             loginAdmin,
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             copyright
           ],
         ),

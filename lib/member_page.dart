@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_page.dart';
-import 'profil_page.dart';
-import 'tracking_page.dart';
 import 'dashboard_member.dart';
 import 'about.dart';
-import 'main.dart';
-import 'dart:async';
-import 'dart:io';
 
 class MemberPage extends StatefulWidget {
   static String tag = 'member-page';
+
+  const MemberPage({Key? key}) : super(key: key);
+  @override
   _MemberPageState createState() => _MemberPageState();
 }
 
@@ -54,17 +52,17 @@ class _MemberPageState extends State<MemberPage> {
     ];
 
     final _bottomNavBarItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(Icons.home),
-        title: Text('Beranda'),
+        label: "Beranda",
       ),
-      BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(Icons.lock),
-        title: Text('Admin'),
+        label: 'Admin',
       ),
-      BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(Icons.info),
-        title: Text('About'),
+        label: "About",
       ),
     ];
 
@@ -77,7 +75,7 @@ class _MemberPageState extends State<MemberPage> {
     );
 
     return Scaffold(
-      backgroundColor: Color(0xff329cef),
+      backgroundColor: const Color(0xff329cef),
       body: Center(
         child: _children.elementAt(_selectedTabIndex),
       ),

@@ -3,17 +3,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'Detail.dart';
 import 'adddata.dart';
 import 'editdata.dart';
-import 'package:pengiriman/home_page.dart';
 
 class HomeCust extends StatefulWidget {
   static String tag = 'cust-page';
+
+  const HomeCust({Key? key}) : super(key: key);
   @override
   // final String text;
   // Home({Key key, @required this.text}) : super(key: key);
-  _HomeState createState() => new _HomeState();
+  _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<HomeCust> {
@@ -28,33 +28,33 @@ class _HomeState extends State<HomeCust> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Daftar Customer",
           style: TextStyle(fontFamily: "Netflix"),
         ),
         backgroundColor: Colors.blue,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).pushReplacement(new MaterialPageRoute(
-              builder: (BuildContext context) => new AddData()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => AddData()));
         },
       ),
 
-      body: new FutureBuilder<List>(
+      body: FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
 
           return snapshot.hasData
-              ? new ItemList(
+              ? ItemList(
                   list: snapshot.data ?? [],
                 )
-              : new Center(
-                  child: new CircularProgressIndicator(),
+              : const Center(
+                  child: CircularProgressIndicator(),
                 );
         },
       ),
@@ -79,7 +79,7 @@ class _HomeState extends State<HomeCust> {
 
 class ItemList extends StatelessWidget {
   final List list;
-  ItemList({required this.list});
+  const ItemList({required this.list});
 
   void _DeleteData(BuildContext context, String error) {
     final scaffold = ScaffoldMessenger.of(context);
@@ -94,19 +94,19 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView.builder(
+    return ListView.builder(
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, i) {
-        return new Container(
+        return Container(
           padding: const EdgeInsets.all(10.0),
-          child: new GestureDetector(
-            child: new Card(
-              child: new ListTile(
-                title: new Text(
+          child: GestureDetector(
+            child: Card(
+              child: ListTile(
+                title: Text(
                   list[i]['cust_nama'],
-                  style: TextStyle(fontFamily: "Netflix"),
+                  style: const TextStyle(fontFamily: "Netflix"),
                 ),
-                leading: new Icon(Icons.widgets),
+                leading: const Icon(Icons.widgets),
                 subtitle: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -125,19 +125,19 @@ class ItemList extends StatelessWidget {
                     children: [
                       // button edit
                       IconButton(
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
-                                new MaterialPageRoute(
+                                MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        new EditData(
+                                        EditData(
                                           list: list,
                                           index: i,
                                         )));
                           }),
                       // button hapus
                       IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                         onPressed: () {
                           //membuat dialog konfirmasi hapus
 

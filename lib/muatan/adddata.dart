@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'listdata.dart';
-import 'package:flutter/cupertino.dart';
-import 'dart:async';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
 class AddData extends StatefulWidget {
+  const AddData({Key? key}) : super(key: key);
+
   @override
-  _AddDataState createState() => new _AddDataState();
+  _AddDataState createState() => _AddDataState();
 }
 
 class _AddDataState extends State<AddData> {
-  TextEditingController controllerNama = new TextEditingController();
-  TextEditingController controllerTgl = new TextEditingController();
-  TextEditingController controllerBarang = new TextEditingController();
-  TextEditingController controllerBerat = new TextEditingController();
-  var selectedDate = new DateFormat('yyyy-MM-dd').format(DateTime.now());
+  TextEditingController controllerNama = TextEditingController();
+  TextEditingController controllerTgl = TextEditingController();
+  TextEditingController controllerBarang = TextEditingController();
+  TextEditingController controllerBerat = TextEditingController();
+  var selectedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String _valCust = "Pilih Customer";
   List<dynamic> _dataCust = [];
   void getCust() async {
@@ -38,7 +38,7 @@ class _AddDataState extends State<AddData> {
     // TODO: implement initState
     super.initState();
     getCust(); //Ketika pertama kali membuka home screen makan method ini dijalankan untuk pertama kalinya juga
-    controllerTgl = new TextEditingController(text: selectedDate.toString());
+    controllerTgl = TextEditingController(text: selectedDate.toString());
   }
 
   void addData() {
@@ -66,9 +66,9 @@ class _AddDataState extends State<AddData> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
           "Tambah Data",
           style: TextStyle(fontFamily: "Netflix"),
         ),
@@ -77,59 +77,59 @@ class _AddDataState extends State<AddData> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
-            new Column(
+            Column(
               children: <Widget>[
-                new TextField(
+                TextField(
                   controller: controllerTgl,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "yyyy-mm-dd",
                     labelText: "Tanggal Muatan",
-                    icon: Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_today),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerNama,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Nama Muatan",
                     labelText: "Nama Muatan",
-                    icon: Icon(Icons.add_box),
+                    icon: const Icon(Icons.add_box),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerBarang,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Detail Barang",
                     labelText: "Detail Barang",
-                    icon: Icon(Icons.widgets),
+                    icon: const Icon(Icons.widgets),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
-                new TextField(
+                const SizedBox(height: 8.0),
+                TextField(
                   controller: controllerBerat,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                     hintText: "Berat Barang (Kg)",
                     labelText: "Berat Barang (Kg)",
-                    icon: Icon(Icons.monitor_weight),
+                    icon: const Icon(Icons.monitor_weight),
                     border: OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0)),
+                        borderRadius: BorderRadius.circular(5.0)),
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 DecoratedBox(
                     decoration: BoxDecoration(
                   border: Border.all(color: Colors.blueAccent, width: 3),
                   borderRadius: BorderRadius.circular(5.0),
                 )),
                 Padding(
-                  padding: EdgeInsets.only(left: 30, right: 30),
+                  padding: const EdgeInsets.only(left: 30, right: 30),
                   child: DropdownButton(
                     hint: Text(_valCust),
                     isExpanded: true,
@@ -147,12 +147,12 @@ class _AddDataState extends State<AddData> {
                     },
                   ),
                 ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                 ),
                 Row(
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 200,
                       child: RaisedButton(
@@ -166,20 +166,20 @@ class _AddDataState extends State<AddData> {
                               addData();
                               Navigator.pushReplacement(context,
                                   MaterialPageRoute(builder: (context) {
-                                return Muatan();
+                                return const Muatan();
                               }));
                             }
 
                             // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                             //     builder: (BuildContext context) => new Home()));
                           },
-                          child: new Text(
+                          child: const Text(
                             "Simpan Data",
                             style: TextStyle(color: Colors.white),
                           ),
                           color: Colors.green),
                     ),
-                    Container(
+                    SizedBox(
                       height: 50,
                       width: 200,
                       child: RaisedButton(
@@ -187,12 +187,12 @@ class _AddDataState extends State<AddData> {
                           //Navigator.pop(context);
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) {
-                            return Muatan();
+                            return const Muatan();
                           }));
                           // Navigator.of(context).pushReplacement(new MaterialPageRoute(
                           //     builder: (BuildContext context) => new Home()));
                         },
-                        child: new Text(
+                        child: const Text(
                           "Kembali",
                           style: TextStyle(color: Colors.white),
                         ),

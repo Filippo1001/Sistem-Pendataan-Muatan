@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'login_page.dart';
-import 'lap_muatan.dart';
-import 'lap_pengiriman.dart';
-import 'profil_page.dart';
-import 'tracking_page.dart';
-import 'tracking/listdata.dart';
-import 'customer/listdata.dart';
-import 'tarif/listdata.dart';
-import 'muatan/listdata.dart';
-import 'pengguna/listdata.dart';
-import 'pengiriman/listdata.dart';
-import 'sopir/listdata.dart';
 import 'member_page.dart';
 import 'about.dart';
 import 'dashboard.dart';
-import 'main.dart';
-import 'dart:async';
-import 'dart:io';
 
 class HomePage extends StatefulWidget {
   static String tag = 'home-page';
   final String msg;
   // wajib diisi
-  HomePage(this.msg);
+  const HomePage(this.msg, {Key? key}) : super(key: key);
+  @override
   _HomePageState createState() => _HomePageState();
 }
 
@@ -47,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => MemberPage(),
+        builder: (BuildContext context) => const MemberPage(),
       ),
       (route) => false,
     );
@@ -67,13 +53,13 @@ class _HomePageState extends State<HomePage> {
     ];
 
     final _bottomNavBarItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(Icons.home),
-        title: Text('Beranda'),
+        label: "Beranda",
       ),
-      BottomNavigationBarItem(
+      const BottomNavigationBarItem(
         icon: Icon(Icons.info),
-        title: Text('About Me'),
+        label: 'About Me',
       ),
     ];
 
@@ -86,13 +72,13 @@ class _HomePageState extends State<HomePage> {
     );
 
     return Scaffold(
-      backgroundColor: Color(0xff329cef),
+      backgroundColor: const Color(0xff329cef),
       appBar: AppBar(
         title: logo,
         automaticallyImplyLeading: false,
         actions: <Widget>[
-          new IconButton(
-            icon: new Icon(
+          IconButton(
+            icon: const Icon(
               Icons.exit_to_app,
               color: Colors.white,
               size: 30,
